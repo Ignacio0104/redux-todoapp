@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+.task{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin: 10px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.low-category{
+    /* From https://css.glass */
+    background: rgba(60, 193, 255, 0.4);
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.1px);
+    -webkit-backdrop-filter: blur(6.1px);
+    border: 1px solid rgba(60, 193, 255, 0.52);
+}
+
+.medium-category{
+    /* From https://css.glass */
+    background: rgba(255, 172, 60, 0.4);
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.1px);
+    -webkit-backdrop-filter: blur(6.1px);
+    border: 1px solid rgba(255, 172, 60, 0.52);
+}
+
+
+.blocking-category{
+    /* From https://css.glass */
+    background: rgba(255, 60, 60, 0.34);
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.1px);
+    -webkit-backdrop-filter: blur(6.1px);
+    border: 1px solid rgba(255, 60, 60, 0.52);
+}
+
+.completed-category{
+    /* From https://css.glass */
+background: rgba(71, 250, 79, 0.51);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.8px);
+-webkit-backdrop-filter: blur(6.8px);
+border: 1px solid rgba(71, 250, 79, 0.14);
+}
+
+.task-information{
+    padding: 10px;
+}
+
+.task-icons{
+    margin-top: auto;
+}
+
+.task-icons i{
+    padding: 9px;
+    cursor: pointer;
+}
+
+.task-text-area{
+    background-color: transparent;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    margin: 10px;
+    border: 1px solid #fff;
+    font-size: 16px;
+}
+
+.task-radio-container{
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-radio-container > *{
+    margin: 10px;
+}

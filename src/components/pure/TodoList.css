@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
+.todo-list{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+}
+
+.todo-list__title{
+    margin-top: 20vh;
+    margin-left: 10vh;
+    color: #edede9;
+    font-size: 22px;
+    font-family: 'Rowdies', cursive;
+    font-style: italic;
+}

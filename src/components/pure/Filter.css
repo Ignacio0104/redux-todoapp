@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
+.filter-container{
+    display: flex;
+    justify-content: center;
+}
+
+.filter-container button{
+    padding: 10px;
+    margin: 10px;
+    font-size: 15px;
+    font-family: 'Rowdies', cursive;
+    cursor: pointer;
+}
+
+.filter-container__all{
+    background-color: transparent;
+    color: #4361ee;
+    border: 1px solid #4361ee;
+    transition: 0.3s ease-in-out;
+}
+
+.filter-container__all:hover{
+    background-color: #4361ee;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+}
+
+.filter-container__completed{
+    background-color: transparent;
+    color: #0a9396;
+    border: 1px solid #0a9396;
+    transition: 0.3s ease-in-out;
+}
+
+.filter-container__completed:hover{
+    background-color: #0a9396;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+}
+
+
+.filter-container__pending{
+    background-color: transparent;
+    color: #f48c06;
+    border: 1px solid #f48c06;
+    transition: 0.3s ease-in-out;
+}
+
+.filter-container__pending:hover{
+    background-color: #f48c06;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+}
