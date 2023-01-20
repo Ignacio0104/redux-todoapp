@@ -1,18 +1,43 @@
+import { doc, getFirestore, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useRef, useState } from 'react'
+import { firebaseApp } from '../../firebase/credentials';
 import "./TaskForm.css"
 
-const TaskForm = ({submit}) => {
+const db = getFirestore(firebaseApp);
+
+const TaskForm = ({submit,todos,loggedIn}) => {
     const inputRef = useRef();
+    const [databaseUpdating, setDatabaseUpdating] = useState(false);
     const [priority, setPriority] = useState("LOW");
-    const [selectBackground, setSelectBackground] = useState("select__low")
+    const [selectBackground, setSelectBackground] = useState("select__low");
+
+    useEffect(() => {
+     if(databaseUpdating)
+     {
+      updateDataBase();
+     }
+    }, [todos])
+    
 
     const handleChange = (e)=>{
       setPriority(e.target.value);
     }
 
     const handleSubmit = ()=>{
-      submit(inputRef.current.value,priority);
+      setDatabaseUpdating(true);
+      const nextId = () => todos.reduce(function(prev, current) {
+        return (prev.id > current.id) ? prev : current
+    },0)
+      let id = nextId().id;
+      submit(id === undefined ? 0 : parseInt(id)+1,inputRef.current.value,priority);
       inputRef.current.value = ""
+    }
+    
+    const updateDataBase = async()=>{
+      const userReference = doc(db, "users", localStorage.getItem("docId"));
+      await updateDoc(userReference, {
+        todos:todos
+      });
     }
 
     const submitWithEnter =(e)=>{
@@ -33,13 +58,12 @@ const TaskForm = ({submit}) => {
           break;
         default:
           break
-      }
-    
+      }   
     }, [priority])
     
   return (
     <div className='task-form'>
-      <h1 className='task-form_title'>Your TODOs</h1>
+      <h1 className='task-form_title'>{loggedIn ? localStorage.getItem("name").split(" ")[0]+"'s" : "Your"} TODOs</h1>
       <div>
         <input className='task-form_input_text' type={"text"} onKeyDown={(e)=>submitWithEnter(e)} ref={inputRef}></input>
         <i class="fas fa-plus-circle task-form_input_icon" onClick={handleSubmit}></i>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 .navbar {
   background: rgba(255, 255, 255, 0.26);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -15,8 +17,24 @@
   color: white;
 }
 .navbar-link{
-  margin-right: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+  height: 45px;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
   cursor: pointer;
+  color: gray;
+}
+
+.google-icon{
+  -webkit-box-shadow: 13px 9px 25px -8px rgba(0,0,0,1);
+  -moz-box-shadow: 13px 9px 25px -8px rgba(0,0,0,1);
+  box-shadow: 13px 9px 25px -8px rgba(0,0,0,1);
+  border-radius: 50%;
+  border: 1px solid gray;
+  margin-left: 10px;
 }
 
 

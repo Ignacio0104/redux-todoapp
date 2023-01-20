@@ -3,14 +3,16 @@ import { connect } from 'react-redux'
 import { addTodo } from '../../actions/actions';
 import TaskForm from '../pure/TaskForm';
 
-const mapStateToProps = (state) => ({
-    // Not necessary
-})
+const mapStateToProps = (state) => {
+    return{
+        todos: state.todoState
+    }
+}
 
 const mapDispatchToProps = (dispatch) =>{
     return {
-        submit: (text,priority)=>{
-            dispatch(addTodo(text,priority))
+        submit: (id,text,priority)=>{
+            dispatch(addTodo(id,text,priority))
         }
     }
 }

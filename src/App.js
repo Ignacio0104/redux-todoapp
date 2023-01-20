@@ -5,8 +5,7 @@ import TodoList from "./components/pure/TodoList";
 import "./App.css"
 import Navbar from "./components/pure/Navbar";
 import { useState } from "react";
-import LoginForm from "./components/pure/LoginForm";
-import RegisterForm from "./components/pure/RegisterForm";
+import LoginFormContainer from "./components/containers/LoginContainer";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -16,16 +15,14 @@ function App() {
   const handleLoginChanged = (boolean)=>{
     setLoggedIn(boolean);
   }
-  const handleLoginChange = (boolean)=>{
-    setRegister(boolean);
-  }
   
   return (
     <div className="App">
-      <Navbar loggedIn={loggedIn} changeLogin={handleLoginChanged}></Navbar>
+      <LoginFormContainer loggedIn={loggedIn} changeLogin={handleLoginChanged}></LoginFormContainer>
       {
           <>
-          <TodoFormContainer></TodoFormContainer>
+
+          <TodoFormContainer loggedIn={loggedIn}></TodoFormContainer>
           <FilterContainer></FilterContainer>
           <TodoContainer></TodoContainer>
           </> 

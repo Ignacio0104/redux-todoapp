@@ -11,6 +11,15 @@ export const toogleTodo = (id)=>{
     }
 }
 
+export const updateAllTodos = (todos)=>{
+    return{
+        type: "UPDATE_ALL",
+        payload:{
+            todos:todos
+        }
+    }
+}
+
 export const filterTodo = (type)=>{
     return{
         type: "SET_VISIBILITY_FILTER",
@@ -42,11 +51,11 @@ export const updateTodo = (id,text,priority)=>{
 
 
 
-export const addTodo = (text,priority)=>{
+export const addTodo = (id,text,priority)=>{
     return{
         type: "ADD_TODO",
         payload:{
-            id:nextTodoID++,
+            id:id,
             description: text,
             priority: priority
         }

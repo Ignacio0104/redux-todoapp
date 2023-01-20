@@ -3,6 +3,7 @@ const ADD_TODO = 'ADD_TODO';
 const TOOGLE_TODO = 'TOOGLE_TODO';
 const DELETE_TODO = 'DELETE_TODO';
 const UPDATE_TODO = 'UPDATE_TODO';
+const UPDATE_ALL = 'UPDATE_ALL';
 
 let initalState = []
 
@@ -28,6 +29,9 @@ const todoReducer = (state=initalState,action) => {
             }:
             todo        
         )
+    case UPDATE_ALL:
+        state = action.payload.todos;
+        return state;
     case UPDATE_TODO:
         return state.map((todo)=>
         (todo.id === action.payload.id) 
