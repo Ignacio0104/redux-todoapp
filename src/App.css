@@ -24,3 +24,9 @@ html {
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
   }
+
+.title-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 20vh;
+}

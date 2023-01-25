@@ -20,12 +20,17 @@ function App() {
     <div className="App">
       <LoginFormContainer loggedIn={loggedIn} changeLogin={handleLoginChanged}></LoginFormContainer>
       {
+        loggedIn ?
+        (
           <>
-
           <TodoFormContainer loggedIn={loggedIn}></TodoFormContainer>
           <FilterContainer></FilterContainer>
           <TodoContainer></TodoContainer>
           </> 
+        ) :
+        <div className="title-container"> 
+          <h1 className="task-form_title">Please login to continue</h1>
+        </div>
       }
 
     </div>

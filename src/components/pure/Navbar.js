@@ -6,6 +6,9 @@ import {getFirestore,collection,getDocs, query, where, addDoc, getDoc, doc} from
 
 const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+   prompt: 'select_account',
+ });
 const db = getFirestore(firebaseApp);
 
 function Navbar({updateAll,loggedIn,changeLogin}) {
@@ -13,6 +16,7 @@ function Navbar({updateAll,loggedIn,changeLogin}) {
    const [user, setUser] = useState(null);
 
    useEffect(() => { 
+      console.log(auth)
       if(localStorage.getItem("docId")!==null){
         getDoc(doc(db, "users", localStorage.getItem("docId"))).then(res=>
          {
@@ -79,24 +83,13 @@ function Navbar({updateAll,loggedIn,changeLogin}) {
       :
       signInWithPopup(auth, provider)
       .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
         const user = result.user;
         setUser(user);
         checkIfUserExists(user);
         changeLogin(true);
         localStorage.setItem("name",user.displayName);
-        // ...
       }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(error)
         // ...
       });
    }
