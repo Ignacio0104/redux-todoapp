@@ -35,6 +35,7 @@ const TaskForm = ({submit,todos,loggedIn}) => {
     
     const updateDataBase = async()=>{
       const userReference = doc(db, "users", localStorage.getItem("docId"));
+      console.log(todos)
       await updateDoc(userReference, {
         todos:todos
       });

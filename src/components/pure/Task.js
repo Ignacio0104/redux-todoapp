@@ -7,15 +7,18 @@ const Task = ({item,toggle,deleteTodo,editTodo}) => {
   const [priorityItem, setpriorityItem] = useState(item.priority)
   const [priorityChange, setPriorityChange] = useState("task low-category");
 
+  useEffect(()=>{
+    setpriorityItem(item.priority)
+  },[item])
+
   useEffect(() => {
     checkPriority();
   }, [priorityItem])
   
-
   const checkPriority =()=>{
     switch(priorityItem){
       case "LOW":
-        setPriorityChange("task low-category")
+        setPriorityChange("task low-category");
         return 
       case "MEDIUM":
         setPriorityChange("task medium-category")
@@ -25,6 +28,7 @@ const Task = ({item,toggle,deleteTodo,editTodo}) => {
         return
       default:
     }
+
   }
 
   const handleEditionChange=(boolean)=>{
@@ -34,7 +38,7 @@ const Task = ({item,toggle,deleteTodo,editTodo}) => {
 
   const handleEditConfirmation =()=>{
     editTodo(item.id,textAreaRef.current.value,priorityItem);
-    setEditionMode(false)
+    setEditionMode(false);
   }
 
   const changePriority = (symbol)=>{
@@ -61,7 +65,7 @@ const Task = ({item,toggle,deleteTodo,editTodo}) => {
       {item.description}</p>
       ):
       (
-        <div>     
+        <div className='task-text-area-container'>     
         <textarea className='task-text-area' ref={textAreaRef}>{item.description}</textarea>
           <div className='task-radio-container'>
             <button disabled={priorityItem==="LOW"} onClick={()=>changePriority("-")}><i class="fas fa-minus"></i></button>

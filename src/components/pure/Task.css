@@ -80,3 +80,19 @@ border: 1px solid rgba(71, 250, 79, 0.14);
 .task-radio-container > *{
     margin: 10px;
 }
+
+@media only screen and (max-width: 425px) {
+    .task{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .task-text-area-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .task-icons{
+        display: flex;
+        justify-content: end;
+    }
+  }

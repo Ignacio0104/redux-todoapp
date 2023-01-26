@@ -16,7 +16,6 @@ function Navbar({updateAll,loggedIn,changeLogin}) {
    const [user, setUser] = useState(null);
 
    useEffect(() => { 
-      console.log(auth)
       if(localStorage.getItem("docId")!==null){
         getDoc(doc(db, "users", localStorage.getItem("docId"))).then(res=>
          {
@@ -36,11 +35,12 @@ function Navbar({updateAll,loggedIn,changeLogin}) {
             {
                completed: item.mapValue.fields.completed.booleanValue,
                description: item.mapValue.fields.description.stringValue,
-               id: item.mapValue.fields.id.integerValue,
+               id: item.mapValue.fields.id.integerValue  !== undefined ? item.mapValue.fields.id.integerValue : item.mapValue.fields.id.stringValue,
                priority: item.mapValue.fields.priority.stringValue
             }
          ))
          updateAll(firebaseArray);
+         console.log(firebaseArray)
       }else{ 
          console.log("el array está vacio")
       }
